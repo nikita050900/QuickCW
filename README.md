@@ -3,8 +3,8 @@ Fast continuous wave (CW) analysis for pulsar timing array data
 
 This is a fork of NANOGrav/Bence Becsy's original QuickCW that is aimed at performing targeted searches on specific sources.
 
-Hello Jessica
-Trial2
+Hello Nikita
+
 See [arXiv:2204.07160](https://arxiv.org/abs/2204.07160) for details on the method, and the [Quick-start Guide](https://github.com/nanograv/QuickCW/blob/main/docs/how_to_run_QuickCW.md) for details on how to run the code yourself!
 
 Citation:
