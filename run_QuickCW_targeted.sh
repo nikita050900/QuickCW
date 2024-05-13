@@ -1,8 +1,14 @@
 #!/bin/bash
 
-#It can be beneficial to set the numba thread number to the number of physical cores of the machine used
-export NUMBA_NUM_THREADS=12
-export MKL_NUM_THREADS=12
+#SBATCH --job-name=FBQS_J1159+2914
+#SBATCH --output=FBQS_J1159+2914.out
+#SBATCH -p sbs0016
+#SBATCH --mem-per-cpu=64G
+#SBATCH --ntasks=1
 
-#nice -n 20 /usr/bin/time python -u runQuickMCMC.py
-python -u QuickCW/runQuickMCMC_targeted.py
+which python
+
+python runQuickMCMC.py
+
+echo "Run complete."
+
