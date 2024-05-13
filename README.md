@@ -1,7 +1,7 @@
 # QuickCW
 Fast continuous wave (CW) analysis for pulsar timing array data
 
-This is a fork of NANOGrav/Bence Becsy's original QuickCW that is aimed at performing targeted searches on specific sources.
+Theees is a fork of NANOGrav/Bence Becsy's original QuickCW that is aimed at performing targeted searches on specific sources.
 
 baldjfaie 
 alej a
