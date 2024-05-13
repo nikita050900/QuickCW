@@ -8,7 +8,7 @@
 
 which python
 
-python runQuickMCMC.py
+python runQuickMCMC_targeted.py
 
 echo "Run complete."
 
