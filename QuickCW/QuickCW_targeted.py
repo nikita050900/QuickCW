@@ -134,9 +134,8 @@ def QuickCW(chain_params, psrs, noise_json=None, use_legacy_equad=False, include
     log10_fgw = parameter.Uniform(np.log10(chain_params.freq_bounds[0]), np.log10(chain_params.freq_bounds[1]))(
         '0_log10_fgw')
 
-    m_max = 12.59                                              #Commented for UL
-
-    log10_mc = parameter.Uniform(8.39, m_max)('0_log10_mc')   #Commented for UL
+    m_max = 12.59  # This is calculated and changed for a target
+    m_min = 8.39   # This is calculated and changed for a target
 
     phase0 = parameter.Uniform(0, 2 * np.pi)('0_phase0')
     psi = parameter.Uniform(0, np.pi)('0_psi')
@@ -144,13 +143,12 @@ def QuickCW(chain_params, psrs, noise_json=None, use_legacy_equad=False, include
 
     p_phase = parameter.Uniform(0, 2*np.pi)
 
+    # Set prior shapes for strain and chirp mass depending on detection vs UL.
+    log10_h = parameter.Uniform(-18, -11)('0_log10_h')
     if amplitude_prior == 'detection':
-        log10_h = parameter.Uniform(-18, -11)('0_log10_h')
-        #log10_mc = parameter.Uniform(7, 11)('0_log10_mc')
+        log10_mc = parameter.Uniform(m_min, m_max)('0_log10_mc')
     elif amplitude_prior == 'UL':
-        #log10_h = parameter.LinearExp(-18, -11)('0_log10_h')
-        log10_h = parameter.Uniform(-18, -11)('0_log10_h')
-        log10_mc = parameter.LinearExp(6.6, 10)('0_log10_mc')
+        log10_mc = parameter.LinearExp(m_min, m_max)('0_log10_mc')
     else:
         raise NotImplementedError(
             "amplitude_prior provided not implemented\nuse either 'detection' for uniform in log-amplitude or 'UL' for uniform in amplitude prior")
