@@ -145,6 +145,7 @@ def QuickCW(chain_params, psrs, noise_json=None, use_legacy_equad=False, include
 
     # Set prior shapes for strain and chirp mass depending on detection vs UL.
     log10_h = parameter.Uniform(-18, -11)('0_log10_h')
+    
     if amplitude_prior == 'detection':
         log10_mc = parameter.Uniform(m_min, m_max)('0_log10_mc')
     elif amplitude_prior == 'UL':

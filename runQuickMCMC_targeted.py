@@ -26,7 +26,7 @@ from enterprise_extensions import deterministic
 #import glob
 #import json
 
-import QuickCW.QuickCW as QuickCW
+import QuickCW.QuickCW_targeted as QuickCW
 from QuickCW.QuickMCMCUtils import ChainParams
 #import QuickCW.FastLikelihoodNumba as FastLikelihoodNumba
 
