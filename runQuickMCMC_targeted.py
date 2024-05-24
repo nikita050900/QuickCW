@@ -112,7 +112,7 @@ pta,mcc = QuickCW.QuickCW(chain_params, psrs,
                                   noise_json=noisefile)
 
 #Some parameters in chain_params can be updated later if needed
-mcc.chain_params.thin = 10
+#mcc.chain_params.thin = 10
 
 #Do the main MCMC iteration
 mcc.advance_N_blocks(N_blocks)
