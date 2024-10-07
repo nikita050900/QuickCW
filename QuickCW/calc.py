@@ -9,14 +9,14 @@ import math
 
 def calc_mass_ratio(mc,mt):
 
-"""
+    """
 
-Code to save you from ever again having to do the quadratic equation
-while converting a pair of Mc and Mtot to a mass ratio.
+    Code to save you from ever again having to do the quadratic equation
+    while converting a pair of Mc and Mtot to a mass ratio.
 
-Go in peace.
+    Go in peace.
 
-"""
+    """
     term1 = math.sqrt(
         ((mt**4) * ((mc/mt)**(2/3)))
         -
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.mc == None or args.mt == None:
-        print("\n\t------- ERROR -------\nYou must supply both Mc and Mtot values as -c and -t, respectively.\n\t---------------------\n")
+        print("\n\t------- ERROR -------\nYou must supply both log(Mc) and log(Mtot) values as -c and -t, respectively.\n\t---------------------\n")
         exit()
 
     mc = 10**(args.mc)
