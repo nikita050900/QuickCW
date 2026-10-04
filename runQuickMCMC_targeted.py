@@ -26,7 +26,7 @@ from enterprise_extensions import deterministic
 #import glob
 #import json
 
-import QuickCW.QuickCW as QuickCW
+import QuickCW.QuickCW_targeted as QuickCW
 from QuickCW.QuickMCMCUtils import ChainParams
 #import QuickCW.FastLikelihoodNumba as FastLikelihoodNumba
 
@@ -40,7 +40,7 @@ import healpy as hp
 from healpy.newvisufunc import projview, newprojplot
 
 #make sure this points to the pickled pulsars you want to analyze
-data_pkl = '/scratch/na00078/15yr_data/15yrCW/v1p1_de440_pint_bipm2019_unshifted_pdist.pkl'
+data_pkl = '/scratch/js0311/15yr_data/15yrCW/v1p1_de440_pint_bipm2019_unshifted_pdist.pkl'
 
 with open(data_pkl, 'rb') as psr_pkl:
     psrs = pickle.load(psr_pkl)
@@ -67,34 +67,34 @@ T_max = 3.
 n_chain = 4 
 
 #make sure this points to your white noise dictionary
-noisefile = '/scratch/na00078/15yr_data/15yr_v1_1/v1p1_wn_dict.json'
+noisefile = '/scratch/js0311/15yr_data/15yr_v1_1/v1p1_wn_dict.json'
 
 #make sure this points to the RN empirical distribution file you plan to use (or set to None to not use empirical distributions)
-rn_emp_dist_file = '/scratch/na00078/15yr_data/15yr_v1_1/rn_distr_v1p1.pkl'
+rn_emp_dist_file = '/scratch/js0311/15yr_data/15yr_v1_1/rn_distr_v1p1.pkl'
 #rn_emp_dist_file = None
 
 #file containing information about pulsar distances - None means use pulsar distances present in psr objects
 #if not None psr objects must have zero distance and unit variance
-psr_dist_file = '/scratch/na00078/15yr_data/15yrCW/pulsar_distances_15yr.pkl'
+psr_dist_file = '/scratch/js0311/15yr_data/15yrCW/pulsar_distances_15yr.pkl'
 #psr_dist_file = None
 
 #this is where results will be saved
-savefile = '/scratch/na00078/Jet_Source_Project/results/FBQS_J1159+2914.h5'
+savefile = '/scratch/js0311/jet_source_project_results/binary_model_detect_runs/3C345_4.23E_8.h5
 #savefile = None
 
 ###############
 #targeted search params-LondonAdd
-c = SkyCoord(ra = '11h59m31.8339s', dec = '29d14m43.827s')
+c = SkyCoord(ra = '16h42m58.8099s', dec = '39d48m36.993s')
 cos_gwtheta = np.cos(np.pi/2 - c.dec.radian)
 gwphi = c.ra.radian
 #targeted freq
-TargFreq = 6.671176381900831e-10  
+TargFreq = 4.23e-08 
 ##############
 
 #Setup and start MCMC
 #object containing common parameters for the mcmc chain
 chain_params = ChainParams(T_max,n_chain, n_block_status_update,
-                           freq_bounds=np.array([TargFreq-.5e-10, TargFreq+.5e-10]), #prior bounds used on the GW frequency (a lower bound of np.nan is interpreted as 1/T_obs)
+                           freq_bounds=np.array([TargFreq-.5e-8, TargFreq+.5e-8]), #prior bounds used on the GW frequency (a lower bound of np.nan is interpreted as 1/T_obs)
                            n_int_block=n_int_block, #number of iterations in a block (which has one shape update and the rest are projection updates)
                            save_every_n=save_every_n, #number of iterations between saving intermediate results (needs to be intiger multiple of n_int_block)
                            fisher_eig_downsample=fisher_eig_downsample, #multiplier for how much less to do more expensive updates to fisher eigendirections for red noise and common parameters compared to diagonal elements
